@@ -10,7 +10,6 @@ export default defineNitroConfig({
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Expose-Headers": "*",
       },
-      proxy: { to: process.env.API_URL },
     },
   },
 });

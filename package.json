@@ -3,8 +3,9 @@
   "scripts": {
     "prepare": "nitropack prepare",
     "dev": "nitropack dev",
-    "build": "nitropack build",
-    "preview": "node .output/server/index.mjs"
+    "build": "prisma generate && nitropack build",
+    "preview": "node .output/server/index.mjs",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.8.0",

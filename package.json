@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "nitropack prepare",
+    "dev": "nitropack dev",
+    "build": "nitropack build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.8.0",
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^1.41.2",
+    "h3-formidable": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "nitropack": "latest"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.5",
+    "prisma": "^5.8.0"
+  }
+}

@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cart {
+  createdAt DateTime @default(now())
+  userId    String
+  recipeId  String
+  recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, recipeId])
+}
+
+model Category {
+  id      String   @id
+  name    String   @unique
+  recipes Recipe[]
+}
+
+model Favourite {
+  createdAt DateTime @default(now())
+  userId    String
+  recipeId  String
+  recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, recipeId])
+}
+
+model Ingredient {
+  id                Int                @id @default(autoincrement())
+  name              String             @unique
+  extra             String?
+  img               String?
+  recipeIngredients RecipeIngredient[]
+}
+
+model RecipeIngredient {
+  id           Int         @id @default(autoincrement())
+  quantity     String
+  unit         String
+  recipeId     String?
+  ingredientId Int?
+  ingredient   Ingredient? @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  recipe       Recipe?     @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([recipeId, ingredientId])
+}
+
+model Recipe {
+  id                String             @id @default(uuid())
+  name              String
+  prep_time         String
+  image             String
+  cloudinary_id     String
+  directions        String
+  category_id       String
+  about             String
+  tags              String?
+  difficulty        String
+  carts             Cart[]
+  favourites        Favourite[]
+  recipeIngredients RecipeIngredient[]
+  category          Category           @relation(fields: [category_id], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id         String      @id @default(uuid())
+  username   String      @unique
+  email      String      @unique
+  password   String
+  cart       Cart[]
+  favourites Favourite[]
+}

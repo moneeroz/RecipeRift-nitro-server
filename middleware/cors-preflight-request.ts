@@ -4,4 +4,6 @@ export default defineEventHandler((event) => {
     event.node.res.statusMessage = "No Content";
     return "OK";
   }
+  event.headers.set("Access-Control-Allow-Origin", "*");
+  event.headers.set("Access-Control-Allow-Methods", "*");
 });

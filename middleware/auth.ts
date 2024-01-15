@@ -5,8 +5,9 @@ export default defineEventHandler((event) => {
   const isFavourites = path.startsWith("/favourites");
   const isCartPath = path.startsWith("/cart");
   const isAuthPutPath = path.startsWith("/auth") && event.method === "PUT";
+  const isRecipe = path.startsWith("/recipes") && event.method !== "GET";
 
-  if (isFavourites || isCartPath || isAuthPutPath) {
+  if (isFavourites || isCartPath || isAuthPutPath || isRecipe) {
     const token = event.headers.get("authorization");
 
     if (!token) {

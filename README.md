@@ -1,4 +1,4 @@
-# React Native Recipes Nitro BACK-END Server
+# RecipeRift Nitro BACK-END Server
 
 Stack: Nitro, Node.js, PostegresDB, Prisma
 

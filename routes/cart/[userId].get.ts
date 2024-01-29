@@ -8,7 +8,9 @@ export default defineEventHandler(async (event) => {
       where: { userId },
       include: { recipe: { include: { recipeIngredients: true } } },
     });
-    return Response.json(cart, { status: 200 });
+
+    const cartItems = cart.map((i) => ({ ...i.recipe, count: i.count }));
+    return Response.json(cartItems, { status: 200 });
   } catch (error) {
     return error.message;
   }

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const [userId, recipeId] = params.split("/");
 
   try {
-    const cartItem = await prisma.cart.delete({
+    await prisma.cart.delete({
       where: {
         userId_recipeId: {
           userId: userId,
@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
         },
       },
     });
-    return Response.json(cartItem, { status: 200 });
+    return Response.json("Removed from cart successfully", { status: 200 });
   } catch (error) {
     return error.message;
   }

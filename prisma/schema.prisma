@@ -13,6 +13,7 @@ model Cart {
   recipeId  String
   recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  count     Int      @default(1)
 
   @@id([userId, recipeId])
 }

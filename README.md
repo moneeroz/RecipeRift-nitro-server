@@ -1,4 +1,4 @@
-# React Native Recipes Nitro BACK-END Server
+# RecipeRift Nitro BACK-END Server
 
 Stack: Nitro, Node.js, PostegresDB, Prisma
 
@@ -11,7 +11,7 @@ This project was developed by [Me](https://github.com/Moneeroz)
 
 ## Getting Started
 
-clone the front-end repo from [Here](https://github.com/moneeroz/rn-recipes) and follow its README to get it running!
+clone the front-end repo from [Here](https://github.com/moneeroz/RecipeRift) and follow its README to get it running!
 
 To run the following project on your machine please follow the steps below:
 
